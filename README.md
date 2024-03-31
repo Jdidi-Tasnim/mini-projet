@@ -1,37 +1,34 @@
 # mini-projet
 GRPC 
-Définition des services et des messages (Protobuf):
+1-configurer correctement pom.xml avec les dépendances nécessaires pour gRPC et le plugin Maven pour la génération de code à partir du fichier .proto
+2-Génération de code à partir du fichier .proto: Utilisez la commande Maven pour générer le code Java à partir du fichier .proto
+maven build
+3-Implémentation du serveur et du client gRPC en utilisant les classes générés à partir du fichier .proto
+4-Commpilation de projet :
+Compilez votre projet Maven pour vous assurer que toutes les dépendances sont correctement téléchargées et que le code est correctement généré.
+(J'ai fait update pour mon projet (maven update puis run as Mavne build)
+5-Exécution du serveur: Lancez votre serveur en exécutant la classe principale du serveur.
+6-Exécution du client: Lancez votre client en exécutant la classe principale du client.
+Test d'application:Une fois que le serveur et le client sont en cours d'exécution, testez votre application en envoyant des messages, en récupérant des messages
+Java Rmi:
+Déploiement :
+Implémenter les interfaces distantes : Créez les interfaces distantes décrivant les méthodes que votre serveur RMI exposera.
 
-La communication entre le client et le serveur utilise gRPC, qui s'appuie sur des définitions de services et de messages dans un fichier .proto.
-Le fichier .proto définit le service MessagingService avec deux méthodes RPC : SendMessage et GetMessagesForUser.
-Il définit aussi les messages utilisés par ces méthodes : MessageRequest, UserRequest, MessageResponse et MessagesResponse.
-Génération de code:
+Implémenter le serveur RMI : Implémentez le serveur RMI en créant une classe qui étend UnicastRemoteObject et implémente l'interface distante.
 
-Le plugin gRPC génère des classes Java à partir du fichier .proto.
-Ces classes permettent aux clients et serveurs de communiquer en utilisant les messages et services définis dans le fichier .proto.
-Implémentation du serveur:
+Implémenter le client RMI : Implémentez le client RMI en utilisant la classe Naming pour rechercher l'objet distant sur le registre RMI.
 
-La classe MessagingServer implémente le serveur gRPC avec la bibliothèque gRPC Java.
-Le serveur écoute sur le port 9000 (modifiable) et une implémentation du service MessagingService est ajoutée.
-Les méthodes RPC du service MessagingService sont implémentées dans la classe MessagingServiceImpl.
-La logique métier pour traiter les requêtes et renvoyer les réponses est implémentée dans ces méthodes.
-Implémentation du client:
+Compiler les classes : Compilez toutes les classes du serveur et du client.
 
-La classe MessagingClient crée un client gRPC qui se connecte au serveur avec l'adresse IP et le port du serveur.
-Le stub généré est utilisé pour invoquer les méthodes RPC du serveur (sendMessage et getMessagesForUser).
-Des instances des messages MessageRequest et UserRequest sont créées et passées en paramètres aux méthodes RPC.
-Les réponses du serveur sont ensuite traitées.
-Exécution du serveur et du client:
+Générer les fichiers de stub et de skeleton : Utilisez rmic pour générer les fichiers de stub et de skeleton nécessaires pour la communication RMI.
+Test:
+Démarrer rmiRegister rmiregistry (dans le terminal)
+ (ou bien a travers le code )
+ Démarrer le serveur : Lancez votre serveur RMI en exécutant la classe principale du serveur.
+ Exécuter le client : Lancez votre client RMI en exécutant la classe principale du client.
+ Tester l'application : Une fois que le serveur et le client sont en cours d'exécution, testez votre application en ajoutant des tâches, en récupérant des tâches, etc.
 
-Le serveur MessagingServer est démarré en premier pour écouter les requêtes sur le port spécifié.
-Le client MessagingClient est ensuite exécuté pour se connecter au serveur et envoyer des requêtes RPC pour interagir avec le service de messagerie.
-En résumé:
 
-Le fichier .proto définit les services et messages utilisés pour la communication.
-Le plugin gRPC génère des classes Java à partir du fichier .proto.
-Le serveur gRPC est implémenté avec la bibliothèque gRPC Java et écoute sur un port.
-Le client gRPC se connecte au serveur et utilise les stubs générés pour invoquer les méthodes RPC.
-Les messages définis dans le fichier .proto sont utilisés pour échanger des données entre le client et le serveur.
 Socket:
 Déploiement du serveur :
 Compilez le fichier ChatServer.java pour générer le fichier ChatServer.class
