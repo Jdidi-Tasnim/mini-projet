@@ -32,3 +32,24 @@ Le plugin gRPC génère des classes Java à partir du fichier .proto.
 Le serveur gRPC est implémenté avec la bibliothèque gRPC Java et écoute sur un port.
 Le client gRPC se connecte au serveur et utilise les stubs générés pour invoquer les méthodes RPC.
 Les messages définis dans le fichier .proto sont utilisés pour échanger des données entre le client et le serveur.
+Socket:
+Déploiement du serveur :
+Compilez le fichier ChatServer.java pour générer le fichier ChatServer.class
+javac ChatServer.java
+Exécutez le fichier ChatServer.class pour démarrer le serveur.
+java ChatServer
+Déploiement du client :
+Compilez le fichier ChatClient.java pour générer le fichier ChatClient.class.
+javac ChatClient.java
+Exécutez le fichier ChatClient.class pour démarrer un client.
+java ChatClient
+Test de l'application :
+Une fois que le serveur et le client sont en cours d'exécution, le serveur affichera "Server started. Waiting for clients..." et attendra les connexions des clients.
+
+Exécutez plusieurs instances du client pour simuler plusieurs utilisateurs se connectant au serveur. Vous pouvez exécuter plusieurs instances du client dans différents terminaux ou dans des fenêtres de console distinctes.
+
+Une fois que les clients sont connectés, ils peuvent commencer à échanger des messages. Chaque fois qu'un client envoie un message, il sera diffusé à tous les autres clients connectés.
+
+Vous pouvez saisir des messages dans la console du client pour les envoyer au serveur. Le serveur recevra ces messages et les diffusera à tous les autres clients, qui les afficheront dans leur console.
+
+Vous pouvez tester différents scénarios, tels que l'envoi de messages de plusieurs clients simultanément, la déconnexion et la reconnexion des clients, etc., pour vous assurer que l'application fonctionne correctement dans diverses situations.
